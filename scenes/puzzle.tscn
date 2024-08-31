@@ -1,0 +1,149 @@
+[gd_scene load_steps=11 format=3 uid="uid://cglsm08sju40a"]
+
+[ext_resource type="Texture2D" uid="uid://cddbd308li2ix" path="res://images-backgrounds/background.png" id="1_gr0im"]
+[ext_resource type="Script" path="res://scripts/top_menu.gd" id="2_4wbk8"]
+[ext_resource type="Texture2D" uid="uid://dtdyx845hk56d" path="res://icons/clock-solid.svg" id="2_hkiwt"]
+[ext_resource type="Texture2D" uid="uid://c2bpsujgydxt5" path="res://icons/shuffle-solid.svg" id="3_vtv3k"]
+[ext_resource type="Texture2D" uid="uid://bpf8edjf4uc0b" path="res://icons/house-solid.svg" id="4_yfqnk"]
+[ext_resource type="Texture2D" uid="uid://dggx07kms3a4c" path="res://icons/volume-high-solid.svg" id="5_kllr0"]
+[ext_resource type="Script" path="res://scripts/puzzle.gd" id="6_sq8ox"]
+[ext_resource type="Script" path="res://scripts/back_to_home_menu.gd" id="7_sh36r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_klw8y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hoxad"]
+bg_color = Color(0.368627, 0.262745, 0.188235, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="PuzzleScene" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_gr0im")
+expand_mode = 1
+
+[node name="TopMenu" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 50.0
+color = Color(0.368627, 0.262745, 0.188235, 1)
+script = ExtResource("2_4wbk8")
+
+[node name="Clock" type="TextureRect" parent="TopMenu"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 10.0
+offset_right = 537.0
+offset_bottom = 522.0
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_hkiwt")
+
+[node name="Time" type="Label" parent="TopMenu"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 11.0
+offset_right = 105.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="SuccessMessage" type="Label" parent="TopMenu"]
+visible = false
+layout_mode = 0
+offset_top = 16.0
+offset_right = 1144.0
+offset_bottom = 39.0
+text = "PUZZLE COMPLETE :)"
+horizontal_alignment = 1
+
+[node name="Shuffle" type="TextureButton" parent="TopMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 408.0
+offset_top = -15.0
+offset_right = 920.0
+offset_bottom = 497.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.06, 0.06)
+tooltip_text = "Shuffle"
+texture_normal = ExtResource("3_vtv3k")
+
+[node name="Mute" type="TextureButton" parent="TopMenu"]
+layout_mode = 0
+offset_left = 1037.0
+offset_top = 12.0
+offset_right = 1677.0
+offset_bottom = 524.0
+scale = Vector2(0.055, 0.055)
+tooltip_text = "Mute"
+texture_normal = ExtResource("5_kllr0")
+
+[node name="Home" type="TextureButton" parent="TopMenu"]
+layout_mode = 0
+offset_left = 1092.0
+offset_top = 8.0
+offset_right = 1668.0
+offset_bottom = 520.0
+scale = Vector2(0.06, 0.06)
+tooltip_text = "Home"
+texture_normal = ExtResource("4_yfqnk")
+
+[node name="Puzzle" type="Node2D" parent="."]
+script = ExtResource("6_sq8ox")
+
+[node name="Layer2Boundary" type="StaticBody2D" parent="Puzzle"]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_klw8y")
+
+[node name="BoundaryPolygon" type="CollisionPolygon2D" parent="Puzzle/Layer2Boundary"]
+polygon = PackedVector2Array(0, 50, 1152, 50, 1152, 648, 0, 648, 0, 50, 0, -384, -448, -384, -437, 975, 1614, 961, 1594, -386, 0, -384)
+
+[node name="BackToHomeMenu" type="Panel" parent="."]
+visible = false
+offset_left = 700.0
+offset_top = 24.0
+offset_right = 1116.0
+offset_bottom = 224.0
+pivot_offset = Vector2(416, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_hoxad")
+script = ExtResource("7_sh36r")
+
+[node name="BackMessage" type="Label" parent="BackToHomeMenu"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 416.0
+offset_bottom = 60.0
+text = "Return to menu?"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackToHomeMenu"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 77.0
+offset_right = 308.0
+offset_bottom = 143.0
+
+[node name="HomeConfirm" type="Button" parent="BackToHomeMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Yes"
+
+[node name="HomeCancel" type="Button" parent="BackToHomeMenu/VBoxContainer"]
+layout_mode = 2
+text = "No"
+
+[connection signal="pressed" from="TopMenu/Shuffle" to="TopMenu" method="_on_shuffle_pressed"]
+[connection signal="pressed" from="TopMenu/Mute" to="TopMenu" method="_on_mute_pressed"]
+[connection signal="pressed" from="TopMenu/Home" to="TopMenu" method="_on_home_pressed"]
+[connection signal="pressed" from="BackToHomeMenu/VBoxContainer/HomeConfirm" to="BackToHomeMenu" method="_on_home_confirm_pressed"]
+[connection signal="pressed" from="BackToHomeMenu/VBoxContainer/HomeCancel" to="BackToHomeMenu" method="_on_home_cancel_pressed"]

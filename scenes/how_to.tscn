@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwfdohh6t1jqr"]
+
+[ext_resource type="Script" path="res://scripts/how_to.gd" id="1_rhb1b"]
+[ext_resource type="Texture2D" uid="uid://icu41gegm2eb" path="res://images-backgrounds/howto.png" id="2_emb80"]
+
+[node name="How-to" type="Node2D"]
+script = ExtResource("1_rhb1b")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_emb80")
+expand_mode = 1
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 560.0
+offset_right = 680.0
+offset_bottom = 591.0
+text = "Back"
+
+[node name="HowTo" type="Label" parent="."]
+offset_left = 352.0
+offset_top = 176.0
+offset_right = 808.0
+offset_bottom = 485.0
+size_flags_horizontal = 0
+text = "CONTROLS
+This is a jigsaw puzzle simulator. Click and drag pieces with matching images so that the images align. Then, the pieces will automatically snap together. Use the \"Shuffle\" button to rearrange pieces -- useful if a piece is hidden under others.
+
+GOALS
+1. Finish the puzzle quickly. A clock tracks time in the upper left.
+2. 1 of 4 random nature sounds will play when pieces snap together. Listen for them all. "
+autowrap_mode = 2
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

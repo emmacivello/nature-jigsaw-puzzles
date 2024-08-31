@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=3 uid="uid://rqisn87nx8qy"]
+
+[ext_resource type="Script" path="res://scripts/customize.gd" id="1_g1k0q"]
+[ext_resource type="Texture2D" uid="uid://cuew767xac1yn" path="res://images-backgrounds/customize.png" id="2_7tigh"]
+
+[node name="Customize" type="Node2D"]
+script = ExtResource("1_g1k0q")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_7tigh")
+expand_mode = 1
+
+[node name="ChooseImg" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 168.0
+offset_right = 291.0
+offset_bottom = 191.0
+text = "Choose your image:"
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 140)
+offset_left = 240.0
+offset_top = 208.0
+offset_right = 248.0
+offset_bottom = 348.0
+
+[node name="ChooseNumPieces" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 385.0
+offset_right = 470.0
+offset_bottom = 408.0
+text = "Choose the number of pieces:"
+
+[node name="Width" type="Label" parent="."]
+offset_left = 242.0
+offset_top = 424.0
+offset_right = 295.0
+offset_bottom = 450.0
+text = "Width"
+
+[node name="WidthNum" type="Label" parent="."]
+offset_left = 314.0
+offset_top = 424.0
+offset_right = 354.0
+offset_bottom = 450.0
+text = "4"
+
+[node name="WidthSlider" type="HSlider" parent="."]
+offset_left = 376.0
+offset_top = 428.0
+offset_right = 926.0
+offset_bottom = 444.0
+min_value = 4.0
+max_value = 18.0
+value = 4.0
+tick_count = 15
+ticks_on_borders = true
+
+[node name="Height" type="Label" parent="."]
+offset_left = 240.0
+offset_top = 464.0
+offset_right = 299.0
+offset_bottom = 490.0
+text = "Height"
+
+[node name="HeightNum" type="Label" parent="."]
+offset_left = 312.0
+offset_top = 464.0
+offset_right = 352.0
+offset_bottom = 490.0
+text = "4"
+
+[node name="HeightSlider" type="HSlider" parent="."]
+offset_left = 376.0
+offset_top = 468.0
+offset_right = 926.0
+offset_bottom = 484.0
+min_value = 4.0
+max_value = 18.0
+value = 4.0
+tick_count = 15
+ticks_on_borders = true
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 560.0
+offset_right = 680.0
+offset_bottom = 591.0
+text = "Play"
+
+[connection signal="value_changed" from="WidthSlider" to="." method="_on_width_slider_value_changed"]
+[connection signal="value_changed" from="HeightSlider" to="." method="_on_height_slider_value_changed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

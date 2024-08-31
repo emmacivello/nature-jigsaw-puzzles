@@ -1,0 +1,169 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcmecdojgq8n2"]
+
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_68m74"]
+[ext_resource type="Texture2D" uid="uid://3rbcr4xda0or" path="res://images-backgrounds/credits.png" id="1_ibeuo"]
+
+[node name="credits" type="Node2D"]
+script = ExtResource("1_68m74")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_ibeuo")
+expand_mode = 1
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 560.0
+offset_right = 680.0
+offset_bottom = 591.0
+text = "Back"
+
+[node name="GameDesign" type="Label" parent="."]
+offset_left = 377.0
+offset_top = 160.0
+offset_right = 755.0
+offset_bottom = 202.0
+theme_override_font_sizes/font_size = 28
+text = "Game Design, Programming"
+
+[node name="Emma" type="Label" parent="."]
+offset_left = 523.0
+offset_top = 200.0
+offset_right = 615.0
+offset_bottom = 228.0
+theme_override_font_sizes/font_size = 14
+text = "Emma Civello"
+
+[node name="VisualArt" type="Label" parent="."]
+offset_left = 504.0
+offset_top = 240.0
+offset_right = 634.0
+offset_bottom = 279.0
+theme_override_font_sizes/font_size = 28
+text = "Visual Art"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_left = 416.0
+offset_top = 280.0
+offset_right = 709.0
+offset_bottom = 330.0
+theme_override_constants/separation = 10
+
+[node name="ArtType" type="VBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+
+[node name="Drawing" type="Label" parent="HBoxContainer2/ArtType"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Drawing, Photography"
+horizontal_alignment = 2
+
+[node name="Photography" type="Label" parent="HBoxContainer2/ArtType"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Photography"
+horizontal_alignment = 2
+
+[node name="ArtistNames" type="VBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+
+[node name="Emma" type="Label" parent="HBoxContainer2/ArtistNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Emma Civello"
+
+[node name="Chris" type="Label" parent="HBoxContainer2/ArtistNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Chris Hammel"
+
+[node name="SoundEffects" type="Label" parent="."]
+offset_left = 480.0
+offset_top = 343.0
+offset_right = 663.0
+offset_bottom = 382.0
+theme_override_font_sizes/font_size = 28
+text = "Sound Effects"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 414.0
+offset_top = 391.0
+offset_right = 731.0
+offset_bottom = 511.0
+theme_override_constants/separation = 10
+
+[node name="SoundNames" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="cardinal" type="Label" parent="HBoxContainer/SoundNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Cardinal"
+horizontal_alignment = 2
+
+[node name="cricket" type="Label" parent="HBoxContainer/SoundNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Cricket"
+horizontal_alignment = 2
+
+[node name="frog" type="Label" parent="HBoxContainer/SoundNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Frog"
+horizontal_alignment = 2
+
+[node name="robin" type="Label" parent="HBoxContainer/SoundNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Robin"
+horizontal_alignment = 2
+
+[node name="PuzzleButtonClicks" type="Label" parent="HBoxContainer/SoundNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Puzzle & Button Clicks"
+horizontal_alignment = 2
+
+[node name="ArtistNames" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="nerdwithnikon" type="LinkButton" parent="HBoxContainer/ArtistNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "nerdwithnikon"
+underline = 2
+uri = "https://pixabay.com/sound-effects/cardinal-37075/"
+
+[node name="Ruesters" type="LinkButton" parent="HBoxContainer/ArtistNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Ruesters"
+underline = 2
+uri = "https://pixabay.com/sound-effects/cricket-sounds-223663/"
+
+[node name="Breviceps" type="LinkButton" parent="HBoxContainer/ArtistNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Breviceps"
+underline = 2
+uri = "https://pixabay.com/sound-effects/croaking-frogs-37065/"
+
+[node name="ScottishPerson" type="LinkButton" parent="HBoxContainer/ArtistNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Scottish Person"
+underline = 2
+uri = "https://pixabay.com/sound-effects/sound-effect-robin-singing-148333/"
+
+[node name="Clicks" type="LinkButton" parent="HBoxContainer/ArtistNames"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Not_Amasingrock"
+underline = 2
+uri = "https://pixabay.com/sound-effects/video-game-menu-click-sounds-148373/"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
