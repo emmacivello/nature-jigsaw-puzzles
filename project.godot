@@ -1,0 +1,33 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="JigsawPuzzle"
+run/main_scene="res://scenes/menu.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icons/icon.svg"
+
+[autoload]
+
+Global="*res://scripts/global.gd"
+GeneralFuncs="*res://scripts/puzzle-general_purpose_functions.gd"
+MakeNodesFuncs="*res://scripts/puzzle-make_nodes_functions.gd"
+InitCalcFuncs="*res://scripts/puzzle-init_calculation_functions.gd"
+ConnectPiecesFuncs="*res://scripts/puzzle-connect_pieces_functions.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
